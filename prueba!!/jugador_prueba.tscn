@@ -1,0 +1,160 @@
+[gd_scene load_steps=21 format=3 uid="uid://blmxtmmn8hij1"]
+
+[ext_resource type="Texture2D" uid="uid://cqi6185fifiu4" path="res://Assets/Sprite Dreamer 35X35-Sheet.png" id="1_4ms1x"]
+[ext_resource type="Script" uid="uid://bih0spyi4ttbh" path="res://jugador_prueba.gd" id="1_gultt"]
+[ext_resource type="Texture2D" uid="uid://boq4arcbjscc6" path="res://Assets/Sprite cayendo32x32-Sheet.png" id="2_6m2kp"]
+[ext_resource type="Texture2D" uid="uid://kywj4qbig6en" path="res://Assets/Sprite Dreamer Caminando 32X32-Sheet.png" id="3_ijlxn"]
+[ext_resource type="Texture2D" uid="uid://cqxv8ncqocle6" path="res://Assets/Sprite Dreamer Saltando 32X32-Sheet.png" id="4_6mewh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_man0r"]
+atlas = ExtResource("2_6m2kp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gultt"]
+atlas = ExtResource("1_4ms1x")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijlxn"]
+atlas = ExtResource("1_4ms1x")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n64fh"]
+atlas = ExtResource("1_4ms1x")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m2kp"]
+atlas = ExtResource("1_4ms1x")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mewh"]
+atlas = ExtResource("1_4ms1x")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fngp6"]
+atlas = ExtResource("4_6mewh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qx43"]
+atlas = ExtResource("4_6mewh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cd8wh"]
+atlas = ExtResource("4_6mewh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qup58"]
+atlas = ExtResource("4_6mewh")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp7sw"]
+atlas = ExtResource("4_6mewh")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gud1p"]
+atlas = ExtResource("3_ijlxn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lhfb"]
+atlas = ExtResource("3_ijlxn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gud1p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_man0r")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_gultt")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_ijlxn")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_n64fh")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_ijlxn")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_n64fh")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_ijlxn")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_n64fh")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_6m2kp")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_6mewh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fngp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qx43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cd8wh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qup58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cp7sw")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gud1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lhfb")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6m2kp"]
+radius = 6.5
+height = 23.0
+
+[node name="Jugador Prueba" type="CharacterBody2D"]
+position = Vector2(0, 74)
+platform_floor_layers = 4294967264
+script = ExtResource("1_gultt")
+jump_speed = 200.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_gud1p")
+animation = &"idle"
+frame_progress = 0.755723
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -2.5)
+shape = SubResource("CapsuleShape2D_6m2kp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 1
+limit_top = -150
+limit_right = 2000
+limit_bottom = 500
+limit_smoothed = true
